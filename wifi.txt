@@ -1,0 +1,10 @@
+iwctl station wlan0 connect genki
+
+#####Solid state drive/Memory cell clearing#####
+hdparm --user-master u --security-set-pass PasSWorD /dev/sda
+hdparm --user-master u --security-erase-enhanced PasSWorD /dev/sda
+hdparm -I /dev/sda
+
+smartctl -a /dev/nvme0
+nvme format -l 1 /dev/nvme0
+nvme format /dev/nvme0n1 --namespace-id=1 --lbaf=1
